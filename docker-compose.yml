@@ -30,10 +30,10 @@ services:
       database:
         condition: service_healthy
     # Use the following line to use the latest version of khoj. Otherwise, it will build from source. Set this to ghcr.io/khoj-ai/khoj-cloud:latest if you want to use the prod image.
-    image: ghcr.io/khoj-ai/khoj:latest
+    # image: ghcr.io/khoj-ai/khoj:latest
     # Uncomment the following line to build from source. This will take a few minutes. Comment the next two lines out if you want to use the official image.
-    # build:
-      # context: .
+    build:
+      context: .
     ports:
       # If changing the local port (left hand side), no other changes required.
       # If changing the remote port (right hand side),
@@ -56,7 +56,7 @@ services:
       - POSTGRES_PORT=5432
       - KHOJ_DJANGO_SECRET_KEY=secret
       - KHOJ_DEBUG=False
-      - KHOJ_ADMIN_EMAIL=username@example.com
+      - KHOJ_ADMIN_EMAIL=jeremyrexmorris@gmail.com
       - KHOJ_ADMIN_PASSWORD=password
       # Default URL of Terrarium, the default Python sandbox used by Khoj to run code. Its container is specified above
       - KHOJ_TERRARIUM_URL=http://sandbox:8080
@@ -66,7 +66,7 @@ services:
       - KHOJ_SEARXNG_URL=http://search:8080
       # Uncomment line below to use with Ollama running on your local machine at localhost:11434.
       # Change URL to use with other OpenAI API compatible providers like VLLM, LMStudio etc.
-      # - OPENAI_BASE_URL=http://host.docker.internal:11434/v1/
+      - OPENAI_BASE_URL=http://host.docker.internal:11434/v1/
       #
       # Uncomment appropriate lines below to use chat models by OpenAI, Anthropic, Google.
       # Ensure you set your provider specific API keys.
